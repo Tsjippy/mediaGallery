@@ -1,1 +1,1 @@
-A module for the sim-plugin to add signal messaging
+This module adds a media gallery of downloadable pictures, video's and audio files.
