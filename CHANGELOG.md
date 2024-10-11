@@ -2,6 +2,7 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- MODULE_PATH contstant
 
 ### Changed
 
