@@ -23,10 +23,10 @@ add_action( 'wp_trash_post', function($postId){
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\enqueueMediaGalleryScripts');
 function enqueueMediaGalleryScripts(){
-    wp_register_style( 'sim_gallery_style', plugins_url('css/media_gallery.min.css', __DIR__), array(), MODULE_VERSION);
+    wp_register_style( 'sim_gallery_style', SIM\pathToUrl(MODULE_PATH.'css/media_gallery.min.css'), array(), MODULE_VERSION);
 
-    wp_register_script('sim_gallery_script', plugins_url('js/media_gallery.min.js', __DIR__), array('sim_formsubmit_script'), MODULE_VERSION, true);
-    wp_register_script('sim_refresh_gallery_script', plugins_url('js/auto_refresh.min.js', __DIR__), array('sim_formsubmit_script'), MODULE_VERSION, true);
+    wp_register_script('sim_gallery_script', SIM\pathToUrl(MODULE_PATH.'js/media_gallery.min.js'), array('sim_formsubmit_script'), MODULE_VERSION, true);
+    wp_register_script('sim_refresh_gallery_script', SIM\pathToUrl(MODULE_PATH.'js/auto_refresh.min.js'), array('sim_formsubmit_script'), MODULE_VERSION, true);
 
     $pages   = SIM\getModuleOption(MODULE_SLUG, 'mediagallery_pages');
     if(is_numeric(get_the_ID()) && in_array(get_the_ID(), $pages)){
