@@ -4,10 +4,7 @@ use SIM;
 
 use function SIM\printArray;
 
-const MODULE_VERSION		= '8.0.1';
-
-DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
-
+const MODULE_VERSION		= '8.0.2';
 //module slug is the same as grandparent folder name
 DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 
