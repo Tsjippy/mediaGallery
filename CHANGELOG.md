@@ -2,14 +2,19 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- MODULE_PATH contstant
-- MODULE_PATH constant
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [8.0.3] - 2024-10-11
+
+
+### Added
+- MODULE_PATH contstant
+- MODULE_PATH constant
 
 ## [8.0.2] - 2024-10-11
 
