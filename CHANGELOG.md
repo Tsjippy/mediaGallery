@@ -3,6 +3,7 @@
 
 ### Added
 - MODULE_PATH contstant
+- MODULE_PATH constant
 
 ### Changed
 
