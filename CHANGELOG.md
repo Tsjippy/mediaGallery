@@ -10,6 +10,7 @@
 - global css reference
 
 ### Updated
+- blocks
 
 ## [8.0.3] - 2024-10-11
 
