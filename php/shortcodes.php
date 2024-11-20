@@ -2,7 +2,8 @@
 namespace SIM\MEDIAGALLERY;
 use SIM;
 
-add_shortcode('mediagallery', function($atts){
+add_shortcode('mediagallery', __NAMESPACE__.'\mediaGallery');
+function mediaGallery($atts){
     $a = shortcode_atts( array(
         'categories' 	=> [],
         'types'         => ['image', 'audio', 'video'],
@@ -17,4 +18,4 @@ add_shortcode('mediagallery', function($atts){
     $mediaGallery   = new MediaGallery($a['types'], $a['amount'], $a['categories'], false, 1, '', $a['color'] );
 
     return $mediaGallery->filterableMediaGallery();
-});
+}

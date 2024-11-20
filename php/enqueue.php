@@ -2,16 +2,18 @@
 namespace SIM\MEDIAGALLERY;
 use SIM;
 
-add_action( 'wp_after_insert_post', function($postId, $post){
+add_action( 'wp_after_insert_post', __NAMESPACE__.'\afterInsertPost', 10, 2);
+function afterInsertPost($postId, $post){
     if(has_shortcode($post->post_content, 'mediagallery')){
         global $Modules;
 
         $Modules[MODULE_SLUG]['mediagallery_pages'][]  = $postId;
 		update_option('sim_modules', $Modules);
     }
-}, 10, 2);
+}
 
-add_action( 'wp_trash_post', function($postId){
+add_action( 'wp_trash_post', __NAMESPACE__.'\trashPost' );
+function trashPost($postId){
     global $Modules;
     $index  = array_search($postId, $Modules[MODULE_SLUG]['mediagallery_pages']);
     if($index){
@@ -19,7 +21,7 @@ add_action( 'wp_trash_post', function($postId){
         $Modules[MODULE_SLUG]['mediagallery_pages']   = array_values($Modules[MODULE_SLUG]['mediagallery_pages']);
         update_option('sim_modules', $Modules);
     }
-} );
+}
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\enqueueMediaGalleryScripts');
 function enqueueMediaGalleryScripts(){

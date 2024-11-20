@@ -3,7 +3,8 @@ namespace SIM\MEDIAGALLERY;
 use SIM;
 
 //add public/private radio buttons to attachment page
-add_filter( 'attachment_fields_to_edit', function($formFields, $post ){
+add_filter( 'attachment_fields_to_edit', __NAMESPACE__.'\mediaFieldsToEdit', 10, 2);
+function mediaFieldsToEdit($formFields, $post ){
     $fieldValue = get_post_meta( $post->ID, 'gallery_visibility', true );
 
     ob_start();
@@ -19,9 +20,10 @@ add_filter( 'attachment_fields_to_edit', function($formFields, $post ){
         'html'  =>  ob_get_clean()
       );
     return $formFields;
-}, 10, 2);
+}
 
-add_action( 'edit_attachment', function($attachmentId){
+add_action( 'edit_attachment', __NAMESPACE__.'\editAttachment' );
+function editAttachment($attachmentId){
     if ( isset( $_REQUEST['attachments'][$attachmentId]['gallery_visibility'] ) ) {
         $visibility = $_REQUEST['attachments'][$attachmentId]['gallery_visibility'];
 
@@ -33,4 +35,4 @@ add_action( 'edit_attachment', function($attachmentId){
             update_post_meta( $attachmentId, 'gallery_visibility', $visibility );
         }
     }
-} );
+}

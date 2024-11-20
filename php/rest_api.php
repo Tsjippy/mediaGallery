@@ -2,7 +2,8 @@
 namespace SIM\MEDIAGALLERY;
 use SIM;
 
-add_action( 'rest_api_init', function () {
+add_action( 'rest_api_init', __NAMESPACE__.'\restApiInit' );
+function restApiInit() {
 	//load more media
 	register_rest_route(
 		RESTAPIPREFIX.'/media_gallery',
@@ -119,4 +120,4 @@ add_action( 'rest_api_init', function () {
 			)
 		)
 	);
-} );
+}

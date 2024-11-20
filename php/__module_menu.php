@@ -11,7 +11,8 @@ DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 //module slug is the same as grandparent folder name
 DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 
-add_filter('sim_submenu_description', function($description, $moduleSlug){
+add_filter('sim_submenu_description', __NAMESPACE__.'\moduleDescription', 10, 2);
+function moduleDescription($description, $moduleSlug){
 	//module slug should be the same as the constant
 	if($moduleSlug != MODULE_SLUG)	{
 		return $description;
@@ -29,9 +30,10 @@ add_filter('sim_submenu_description', function($description, $moduleSlug){
 	}
 
 	return $description.ob_get_clean();
-}, 10, 2);
+}
 
-add_filter('sim_submenu_options', function($optionsHtml, $moduleSlug, $settings){
+add_filter('sim_submenu_options', __NAMESPACE__.'\moduleOptions', 10, 3);
+function moduleOptions($optionsHtml, $moduleSlug, $settings){
 	//module slug should be the same as grandparent folder name
 	if($moduleSlug != MODULE_SLUG){
 		return $optionsHtml;
@@ -63,9 +65,10 @@ add_filter('sim_submenu_options', function($optionsHtml, $moduleSlug, $settings)
 	<?php
 
 	return ob_get_clean();
-}, 10, 3);
+}
 
-add_filter('sim_module_functions', function($functionHtml, $moduleSlug){
+add_filter('sim_module_functions', __NAMESPACE__.'\moduleFunctions', 10, 2);
+function moduleFunctions($functionHtml, $moduleSlug){
 	//module slug should be the same as grandparent folder name
 	if($moduleSlug != MODULE_SLUG){
 		return $functionHtml;
@@ -135,10 +138,10 @@ add_filter('sim_module_functions', function($functionHtml, $moduleSlug){
 	</form>
 	<?php
 	return ob_get_clean();
-}, 10, 2);
+}
 
-
-add_filter('sim_module_updated', function($options, $moduleSlug, $oldOptions){
+add_filter('sim_module_updated', __NAMESPACE__.'\moduleUpdated', 10, 3);
+function moduleUpdated($options, $moduleSlug, $oldOptions){
 	//module slug should be the same as grandparent folder name
 	if($moduleSlug != MODULE_SLUG){
 		return $options;
@@ -148,18 +151,20 @@ add_filter('sim_module_updated', function($options, $moduleSlug, $oldOptions){
 	$options	= SIM\ADMIN\createDefaultPage($options, 'mediagallery_pages', 'Media Gallery', '[mediagallery]', $oldOptions);
 
 	return $options;
-}, 10, 3);
+}
 
-add_filter('display_post_states', function ( $states, $post ) {
+add_filter('display_post_states', __NAMESPACE__.'\postStates', 10, 2);
+function postStates( $states, $post ) {
 
 	if ( in_array($post->ID, SIM\getModuleOption(MODULE_SLUG, 'mediagallery_pages', false)) ) {
 		$states[] = __('Media gallery page');
 	}
 
 	return $states;
-}, 10, 2);
+}
 
-add_action('sim_module_deactivated', function($moduleSlug, $options){
+add_action('sim_module_deactivated', __NAMESPACE__.'\moduleDeActivated', 10, 2);
+function moduleDeActivated($moduleSlug, $options){
 	//module slug should be the same as grandparent folder name
 	if($moduleSlug != MODULE_SLUG)	{
 		return;
@@ -169,8 +174,7 @@ add_action('sim_module_deactivated', function($moduleSlug, $options){
 		// Remove the auto created page
 		wp_delete_post($page, true);
 	}
-}, 10, 2);
-
+}
 
 /**
  * Checks for duplicate files in a given dir

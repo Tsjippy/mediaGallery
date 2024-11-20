@@ -2,7 +2,8 @@
 namespace SIM\MEDIAGALLERY;
 use SIM;
 
-add_action('init', function () {
+add_action('init', __NAMESPACE__.'\initBlocks');
+function initBlocks() {
 	register_block_type(
 		__DIR__ . '/media-gallery/build',
 		array(
@@ -23,9 +24,10 @@ add_action('init', function () {
 			]
 		)
 	);
-});
+}
 
-add_action( 'enqueue_block_assets', function(){
+add_action( 'enqueue_block_assets', __NAMESPACE__.'\loadBlockAssets' );
+function loadBlockAssets(){
 	if(is_admin()){
 		SIM\enqueueScripts();
 
@@ -37,4 +39,4 @@ add_action( 'enqueue_block_assets', function(){
 
 		wp_enqueue_script('sim_vimeo_shortcode_script');
 	}
-} );
+}
