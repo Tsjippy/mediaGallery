@@ -11,13 +11,8 @@ DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 //module slug is the same as grandparent folder name
 DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 
-add_filter('sim_submenu_description', __NAMESPACE__.'\moduleDescription', 10, 2);
+add_filter('sim_submenu_mediagallery_description', __NAMESPACE__.'\moduleDescription', 10, 2);
 function moduleDescription($description, $moduleSlug){
-	//module slug should be the same as the constant
-	if($moduleSlug != MODULE_SLUG)	{
-		return $description;
-	}
-
 	ob_start();
 	$url		= SIM\ADMIN\getDefaultPageLink($moduleSlug, 'mediagallery_pages');
 	if(!empty($url)){
@@ -32,13 +27,8 @@ function moduleDescription($description, $moduleSlug){
 	return $description.ob_get_clean();
 }
 
-add_filter('sim_submenu_options', __NAMESPACE__.'\moduleOptions', 10, 3);
-function moduleOptions($optionsHtml, $moduleSlug, $settings){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG){
-		return $optionsHtml;
-	}
-
+add_filter('sim_submenu_mediagallery_options', __NAMESPACE__.'\moduleOptions', 10, 2);
+function moduleOptions($optionsHtml, $settings){
 	ob_start();
     ?>
 	<label>Select the categories you do not want to be selectable</label>
@@ -64,16 +54,11 @@ function moduleOptions($optionsHtml, $moduleSlug, $settings){
 	?>
 	<?php
 
-	return ob_get_clean();
+	return $optionsHtml.ob_get_clean();
 }
 
-add_filter('sim_module_functions', __NAMESPACE__.'\moduleFunctions', 10, 2);
-function moduleFunctions($functionHtml, $moduleSlug){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG){
-		return $functionHtml;
-	}
-	
+add_filter('sim_module_mediagallery_functions', __NAMESPACE__.'\moduleFunctions');
+function moduleFunctions($html){
 	ob_start();
 	?>
 	<h4>Duplicate files</h4>
@@ -137,7 +122,7 @@ function moduleFunctions($functionHtml, $moduleSlug){
 		<button type='submit' name='scan-for-orphans'>Scan for orphan attachments</button>
 	</form>
 	<?php
-	return ob_get_clean();
+	return $html.ob_get_clean();
 }
 
 add_filter('sim_module_mediagallery_after_save', __NAMESPACE__.'\moduleUpdated', 10, 2);
@@ -158,13 +143,8 @@ function postStates( $states, $post ) {
 	return $states;
 }
 
-add_action('sim_module_deactivated', __NAMESPACE__.'\moduleDeActivated', 10, 2);
-function moduleDeActivated($moduleSlug, $options){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG)	{
-		return;
-	}
-
+add_action('sim_module_mediagallery_deactivated', __NAMESPACE__.'\moduleDeActivated');
+function moduleDeActivated($options){
 	foreach($options['mediagallery_pages'] as $page){
 		// Remove the auto created page
 		wp_delete_post($page, true);
