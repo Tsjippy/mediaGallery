@@ -7,7 +7,7 @@ async function downloadVimeoVideo(ev){
     }
 
     //show loader
-    ev.target.closest('.submit_wrapper').querySelector('.loadergif').classList.remove('hidden');
+    ev.target.closest('.submit_wrapper').querySelector('.loader_wrapper').classList.remove('hidden');
 
     let params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
@@ -22,7 +22,7 @@ async function downloadVimeoVideo(ev){
     let response    = await FormSubmit.fetchRestApi('vimeo/download_to_server', formData);
 
     //hide loader
-    ev.target.closest('.submit_wrapper').querySelector('.loadergif').classList.add('hidden');
+    ev.target.closest('.submit_wrapper').querySelector('.loader_wrapper').classList.add('hidden');
 
     if(response){
         Main.displayMessage(response, 'success');
