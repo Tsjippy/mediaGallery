@@ -273,7 +273,7 @@ class MediaGallery{
             </div>
 
             <div id="medialoaderwrapper" class="hidden">
-                <img src="<?php echo SIM\LOADERIMAGEURL;?>" loading='lazy' alt=''>
+                <?php echo SIM\LOADERIMAGE;?>
                 <div>Loading more...</div>
             </div>
 
