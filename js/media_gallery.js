@@ -69,7 +69,7 @@ async function loadMore(index, showFirst, skipAmount=0){
 async function catChanged(target){
     document.querySelector('.mediawrapper').innerHTML   = '';
 
-    let loader  = Main.showLoader(document.querySelector('.mediawrapper'), false, 'Loading');
+    let loader  = Main.showLoader(document.querySelector('.mediawrapper'), false, 50, 'Loading');
 
     var amount  = document.querySelector('#media-amount').value;
     var types   = [];
@@ -190,7 +190,7 @@ function mediaTypeSelected(target){
             types   += el.value+'s';
         });
 
-        Main.showLoader(document.getElementById('loadmoremedia'), false, 'Loading '+types);
+        Main.showLoader(document.getElementById('loadmoremedia'), false, 50, 'Loading '+types);
 
         let index    = 0;
         if(media.length > 0){
@@ -286,7 +286,7 @@ document.addEventListener('change', ev=>{
             var start   = parseInt(media[media.length-1].dataset.index);
             loadMore(start, false, curAmount);
 
-            Main.showLoader(document.getElementById('loadmoremedia'), false, 'Loading more...');
+            Main.showLoader(document.getElementById('loadmoremedia'), false, 50, 'Loading more...');
         // We need to remove some
         }else if(target.value < curAmount){
             var i = 1;
