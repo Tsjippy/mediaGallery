@@ -37,7 +37,7 @@ async function loadMore(index, showFirst, skipAmount=0){
     var response    = await FormSubmit.fetchRestApi('media_gallery/load_more_media', formData);
 
     // Hide the full screen loader
-    document.getElementById('medialoaderwrapper').classList.add('hidden');
+    document.getElementById('media-loader-wrapper').classList.add('hidden');
     
     if(!response){
         Main.displayMessage('All media are loaded', 'info');
@@ -62,7 +62,7 @@ async function loadMore(index, showFirst, skipAmount=0){
     }
 
     if(button != null){
-        button.parentNode.querySelector('.loaderwrapper').remove();
+        button.parentNode.querySelector('.loader-wrapper').remove();
     }
 }
 
@@ -128,7 +128,7 @@ function nextButtonClicked(target){
 
     //load more
     if(nextEl == null){
-        document.getElementById('medialoaderwrapper').classList.remove('hidden');
+        document.getElementById('media-loader-wrapper').classList.remove('hidden');
 
         document.getElementById('paged').value = parseInt(document.getElementById('paged').value)+1;
         loadMore(el.dataset.index, true);

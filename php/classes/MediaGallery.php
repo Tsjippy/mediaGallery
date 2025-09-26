@@ -272,7 +272,7 @@ class MediaGallery{
                 ?>
             </div>
 
-            <div id="medialoaderwrapper" class="hidden">
+            <div id="media-loader-wrapper" class="hidden">
                 <?php echo SIM\LOADERIMAGE;?>
                 <div>Loading more...</div>
             </div>
