@@ -448,7 +448,7 @@ class MediaGallery{
                 }
                 ?>
 
-                <div class="buttonwrapper">
+                <div class="button-wrapper">
                     <?php
                     if($canEdit){
                         echo apply_filters('sim-media-edit-link', "<a href='".SITEURL."/wp-admin/upload.php?item=$id' class='button editmedia'>Edit</a>", $id);

@@ -251,7 +251,7 @@ document.addEventListener('click', async ev=>{
 		ev.stopPropagation();
 
         loadMoreMedia(target);
-    }else if(target.matches('.buttonwrapper .description')){
+    }else if(target.matches('.button-wrapper .description')){
         Main.displayMessage(atob(target.dataset.description));
     }else if(target.matches('.media-type-selector')){
         // media type selector
