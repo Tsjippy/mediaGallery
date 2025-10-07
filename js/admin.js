@@ -1,5 +1,5 @@
 async function downloadVimeoVideo(ev){
-    const vimeoUrl   = ev.target.closest('form').querySelector('[name="download_url"]').value;
+    const vimeoUrl   = ev.target.closest('form').querySelector('[name="download-url"]').value;
 
     if(vimeoUrl==''){
         Main.displayMessage('Please give an url to download from', 'error');
@@ -15,7 +15,7 @@ async function downloadVimeoVideo(ev){
     let vidmeoId    = params.vimeoid
     let formData    = new FormData();
     formData.append('vimeoid', vidmeoId);
-    formData.append('download_url', vimeoUrl);
+    formData.append('download-url', vimeoUrl);
 
     Main.displayMessage('Download started please wait till it finishes');
 
@@ -28,10 +28,10 @@ async function downloadVimeoVideo(ev){
         Main.displayMessage(response, 'success');
         ev.target.closest('form').remove();
     }else{
-        ev.target.closest('form').querySelector('[name="download_url"]').value = '';
+        ev.target.closest('form').querySelector('[name="download-url"]').value = '';
     }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('[name="download_video"]').addEventListener('click', downloadVimeoVideo);
+    document.querySelector('[name="download-video"]').addEventListener('click', downloadVimeoVideo);
 });

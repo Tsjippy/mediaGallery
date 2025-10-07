@@ -367,7 +367,7 @@ function checkOrphanMedia(){
 			$results	= array_merge($results, SIM\searchAllDB(
 				$postId,
 				array_merge($excludedTables, [$wpdb->postmeta, $wpdb->prefix.'sim_statistics']),
-				['ID', 'meta_id', 'post_id', 'id', 'email_id', 'postId', 'log_id', 'object_id', 'mediaId', 'umeta_id', 'action_id', 'option_id', 'user_id', 'hitID']
+				['ID', 'meta_id', 'post-id', 'id', 'email_id', 'post_id', 'log_id', 'object_id', 'mediaId', 'umeta_id', 'action_id', 'option_id', 'user_id', 'hitID']
 			));
 
 			if(empty($results)){

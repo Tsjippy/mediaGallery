@@ -237,15 +237,15 @@ class MediaGallery{
                     <option value='100'>100</option>
                 </select>
                 <label>
-                    <input type='checkbox' name='media_type' class='media-type-selector' value='image'>
+                    <input type='checkbox' name='media-type' class='media-type-selector' value='image'>
                     Pictures
                 </label>
                 <label>
-                    <input type='checkbox' name='media_type' class='media-type-selector' value='video'>
+                    <input type='checkbox' name='media-type' class='media-type-selector' value='video'>
                     Videos
                 </label>
                 <label>
-                    <input type='checkbox' name='media_type' class='media-type-selector' value='audio'>
+                    <input type='checkbox' name='media-type' class='media-type-selector' value='audio'>
                     Audio
                 </label>
                 <input class="searchtext" type="text" placeholder="Search..">
