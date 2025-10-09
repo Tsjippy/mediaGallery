@@ -191,7 +191,7 @@ class MediaGallery{
     public function filterableMediaGallery(){
         ob_start();
 
-        $url			= SIM\ADMIN\getDefaultPageLink(MODULE_SLUG, 'front_end_post_pages');
+        $url			= SIM\ADMIN\getDefaultPageLink(MODULE_SLUG, 'front-end-post-pages');
 
         $categories	= get_categories( array(
             'orderby' 		=> 'name',
