@@ -9,6 +9,7 @@
 - page management
 
 ### Fixed
+- bug
 
 ### Updated
 
