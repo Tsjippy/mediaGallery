@@ -31,7 +31,7 @@ function enqueueMediaGalleryScripts(){
     wp_register_script('sim_gallery_script', SIM\pathToUrl(MODULE_PATH.'js/media_gallery.min.js'), array('sim_formsubmit_script'), MODULE_VERSION, true);
     wp_register_script('sim_refresh_gallery_script', SIM\pathToUrl(MODULE_PATH.'js/auto_refresh.min.js'), array('sim_formsubmit_script'), MODULE_VERSION, true);
 
-    $pages   = SIM\getModuleOption(MODULE_SLUG, 'mediagallery_pages');
+    $pages   = SIM\getModuleOption(MODULE_SLUG, 'mediagallery-pages');
     if(is_numeric(get_the_ID()) && in_array(get_the_ID(), $pages)){
         wp_enqueue_style('sim_gallery_style');
 		wp_enqueue_script('sim_gallery_script');

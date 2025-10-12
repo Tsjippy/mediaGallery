@@ -14,7 +14,7 @@ DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 add_filter('sim_submenu_mediagallery_description', __NAMESPACE__.'\moduleDescription', 10, 2);
 function moduleDescription($description, $moduleSlug){
 	ob_start();
-	$url		= SIM\ADMIN\getDefaultPageLink($moduleSlug, 'mediagallery_pages');
+	$url		= SIM\ADMIN\getDefaultPageLink($moduleSlug, 'mediagallery-pages');
 	if(!empty($url)){
 		?>
 		<p>
@@ -128,7 +128,7 @@ function moduleFunctions($html){
 add_filter('sim_module_mediagallery_after_save', __NAMESPACE__.'\moduleUpdated', 10, 2);
 function moduleUpdated($options, $oldOptions){
 	// Create account page
-	$options	= SIM\ADMIN\createDefaultPage($options, 'mediagallery_pages', 'Media Gallery', '[mediagallery]', $oldOptions);
+	$options	= SIM\ADMIN\createDefaultPage($options, 'mediagallery-pages', 'Media Gallery', '[mediagallery]', $oldOptions);
 
 	return $options;
 }
@@ -136,7 +136,7 @@ function moduleUpdated($options, $oldOptions){
 add_filter('display_post_states', __NAMESPACE__.'\postStates', 10, 2);
 function postStates( $states, $post ) {
 
-	if ( in_array($post->ID, SIM\getModuleOption(MODULE_SLUG, 'mediagallery_pages', false)) ) {
+	if ( in_array($post->ID, SIM\getModuleOption(MODULE_SLUG, 'mediagallery-pages', false)) ) {
 		$states[] = __('Media gallery page');
 	}
 
@@ -145,7 +145,7 @@ function postStates( $states, $post ) {
 
 add_action('sim_module_mediagallery_deactivated', __NAMESPACE__.'\moduleDeActivated');
 function moduleDeActivated($options){
-	foreach($options['mediagallery_pages'] as $page){
+	foreach($options['mediagallery-pages'] as $page){
 		// Remove the auto created page
 		wp_delete_post($page, true);
 	}
