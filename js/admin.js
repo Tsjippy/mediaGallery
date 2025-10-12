@@ -21,9 +21,6 @@ async function downloadVimeoVideo(ev){
 
     let response    = await FormSubmit.fetchRestApi('vimeo/download_to_server', formData);
 
-    //hide loader
-    ev.target.closest('.submit-wrapper').querySelector('.loader-wrapper').classList.add('hidden');
-
     if(response){
         Main.displayMessage(response, 'success');
         ev.target.closest('form').remove();
