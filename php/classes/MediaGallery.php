@@ -214,7 +214,7 @@ class MediaGallery{
         <div class='mediagallery-wrapper' style='<?php echo $this->style;?>'>
             <h4>Media gallery options</h4>
             <div class='mediabuttons'>
-                <input type='hidden' id='paged' value=1>
+                <input type='hidden' class='no-reset' id='paged' value=1>
 
                 <?php
                 if($url){
