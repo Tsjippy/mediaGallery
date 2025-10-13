@@ -4,14 +4,21 @@
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Updated
+
+## [8.1.1] - 2025-10-13
+
+
+### Changed
 - classnames
 - data attribute names
 - page management
 
 ### Fixed
 - bug
-
-### Updated
 
 ## [8.1.0] - 2025-10-06
 

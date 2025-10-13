@@ -4,7 +4,7 @@ use SIM;
 
 use function SIM\printArray;
 
-const MODULE_VERSION		= '8.1.0';
+const MODULE_VERSION		= '8.1.1';
 
 DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 
