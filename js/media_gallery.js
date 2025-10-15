@@ -56,7 +56,7 @@ async function loadMore(index, showFirst, skipAmount=0){
 
         //hide the load more button if the last cell has no next button
         var cells = document.querySelectorAll('.large-image');
-        if(cells[cells.length-1].querySelector('.nextbtn') == null){
+        if(cells[cells.length-1].querySelector('.next-button') == null){
             document.getElementById('loadmoremedia').classList.add('hidden');
         }
     }
@@ -239,12 +239,12 @@ document.addEventListener('click', async ev=>{
             // refresh iframe
             iframe.src  = iframe.src;
         }
-    }else if(target.matches('.prevbtn')){
+    }else if(target.matches('.previous-button')){
         let el      = target.closest('.large-image');
         let prevEl = el.previousElementSibling.previousElementSibling;
 
         showImage(prevEl.dataset.index);
-    }else if(target.matches('.nextbtn')){
+    }else if(target.matches('.next-button')){
         nextButtonClicked(target);
     }else if(target.id == 'loadmoremedia'){
         ev.preventDefault();

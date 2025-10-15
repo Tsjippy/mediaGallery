@@ -94,7 +94,7 @@
     background: #f0f0f0ed;
     z-index: 99999;
 
-    .prevbtn, .nextbtn{
+    .previous-button, .next-button{
         position: absolute;
         z-index: 9;
 
@@ -109,11 +109,11 @@
         }
     }
 
-    .prevbtn{
+    .previous-button{
         left: 10px;
     }
 
-    .nextbtn{
+    .next-button{
         right: 10px;
     }
 

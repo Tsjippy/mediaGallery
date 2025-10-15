@@ -392,7 +392,7 @@ class MediaGallery{
                 //Only show back button if not the first item
                 if($i > 1){
                     ?>
-                    <a href="#" class="prevbtn">&#8249;</a>
+                    <a href="#" class="previous-button">&#8249;</a>
                     <?php
                 }
                 ?>
@@ -443,7 +443,7 @@ class MediaGallery{
 
                 if($i != $this->total-1){
                     ?>
-                    <a href="#" class="nextbtn">&#8250;</a>
+                    <a href="#" class="next-button">&#8250;</a>
                     <?php
                 }
                 ?>
