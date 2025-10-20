@@ -22,7 +22,7 @@ class MediaGallery{
         
         $allMimes               = get_allowed_mime_types();
         $this->acceptedMimes    = [];
-        SIM\cleanUpNestedArray($types);
+        array_filter($types);
         $this->types           = $types;
         if(empty($types)){
             $this->types        = ['image', 'audio', 'video'];
