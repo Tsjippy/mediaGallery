@@ -267,13 +267,19 @@ document.addEventListener('click', async ev=>{
         catChanged(target);
     }else if(target.id='category-options'){
         target.closest('.mediagallery-wrapper').querySelector('.media-categories').classList.toggle('hidden');
+    }else{
+        return;
     }
+
+    ev.stopImmediatePropagation();
 });
 
-document.addEventListener('change', ev=>{
+document.addEventListener('change', ev => {
     var target= ev.target;
 
-    if(target.id=='media-amount'){
+    if(target.id == 'media-amount'){
+        ev.stopImmediatePropagation();
+
         //reset page count
         document.getElementById('paged').value = 1;
 
