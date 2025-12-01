@@ -267,7 +267,7 @@ function duplicateFinder($dir, $dir2=''){
 function moveAttachmentToRecycleBin($path){
 	$recycleBin	= WP_CONTENT_DIR.'/attachment-recylce';
 	if (!is_dir($recycleBin)) {
-		mkdir($recycleBin, 0777, true);
+		wp_mkdir_p($recycleBin);
 	}
 
 	preg_match('/(.*)-\d{2,4}x\d{2,4}(\..*)/i', $path, $matches);
