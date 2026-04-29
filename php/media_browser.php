@@ -1,6 +1,6 @@
 <?php
-namespace SIM\MEDIAGALLERY;
-use SIM;
+namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 
 //add public/private radio buttons to attachment page
 add_filter( 'attachment_fields_to_edit', __NAMESPACE__.'\mediaFieldsToEdit', 10, 2);

@@ -1,6 +1,6 @@
 <?php
-namespace SIM\MEDIAGALLERY;
-use SIM;
+namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 
 add_shortcode('mediagallery', __NAMESPACE__.'\mediaGallery');
 function mediaGallery($atts){

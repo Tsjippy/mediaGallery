@@ -1,6 +1,6 @@
 <?php
-namespace SIM\MEDIAGALLERY;
-use SIM;
+namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 use stdClass;
 
 class MediaGallery{
@@ -56,8 +56,8 @@ class MediaGallery{
 
         $this->getMedia();
 
-        wp_enqueue_style('sim_gallery_style');
-		wp_enqueue_script('sim_refresh_gallery_script');
+        wp_enqueue_style('tsjippy_gallery_style');
+		wp_enqueue_script('tsjippy_refresh_gallery_script');
     }
 
     /**
@@ -130,7 +130,7 @@ class MediaGallery{
         }
         ob_start();
 
-        wp_enqueue_script('sim_page_gallery_script');
+        wp_enqueue_script('tsjippy_page_gallery_script');
 
         // make sure we only try to display as many posts as available
         $amount	= min(count($this->posts), $this->amount);
@@ -191,7 +191,7 @@ class MediaGallery{
     public function filterableMediaGallery(){
         ob_start();
 
-        $url			= SIM\ADMIN\getDefaultPageLink(MODULE_SLUG, 'front-end-post-pages');
+        $url			= TSJIPPY\ADMIN\getDefaultPageLink(PLUGINSLUG, 'front-end-post-pages');
 
         $categories	= get_categories( array(
             'orderby' 		=> 'name',
@@ -200,7 +200,7 @@ class MediaGallery{
             'hide_empty' 	=> false,
         ) );
 
-        $shouldSkip     = SIM\getModuleOption(MODULE_SLUG, 'categories', false);
+        $shouldSkip     = SETTINGS['categories'] ?? false;
 
         foreach($categories as $index=>$category){
             if(in_array($category->slug, $shouldSkip)){
@@ -208,7 +208,7 @@ class MediaGallery{
             }
         }
 
-        $categories = apply_filters('sim-media-gallery-categories', $categories);
+        $categories = apply_filters('tsjippy-media-gallery-categories', $categories);
 
         ?>
         <div class='mediagallery-wrapper' style='<?php echo $this->style;?>'>
@@ -249,7 +249,7 @@ class MediaGallery{
                     Audio
                 </label>
                 <input class="searchtext" type="text" placeholder="Search..">
-                <img class='search' src="<?php echo SIM\PICTURESURL.'/magnifier.png'?>" loading='lazy' alt="magnifier">
+                <img class='search' src="<?php echo TSJIPPY\PICTURESURL.'/magnifier.png'?>" loading='lazy' alt="magnifier">
 
                 <button id='category-options' class='button small <?php if(!empty($this->cats)){ echo 'hidden'; }?>'>Categories</button>
             </div>
@@ -359,7 +359,7 @@ class MediaGallery{
                 $path   = get_attached_file($id);
                 if(!file_exists($path)){
                     $this->amount-=1;
-                    SIM\printArray("Check file with id $id");
+                    TSJIPPY\printArray("Check file with id $id");
                     wp_mail(get_option('admin_email'), 'Missing file', "Hi Admin,<br><br>A file is registered in the media gallery but does not exist: $path");
                     continue;
                 }
@@ -414,7 +414,7 @@ class MediaGallery{
                             $mediaHtml  .=  "<source src='$url' type='$mime'>";
                         $mediaHtml  .=  '</video>';
                     }else{
-                        list($width, $height) = getimagesize(SIM\urlToPath($url));
+                        list($width, $height) = getimagesize(TSJIPPY\urlToPath($url));
                         $ratio  = $height/$width;
 
                         // Get the url to the full size image
@@ -423,7 +423,7 @@ class MediaGallery{
                         $mediaHtml  =  "<a href='$fullUrl' class='image'><img src='$url' loading='lazy' with='100%' height='100vh' style='top: max(0px, calc( 50vh - 50vw * $ratio));' data-full='$fullUrl'></a>";
                     }
 
-                    echo apply_filters('sim_media_gallery_item_html', $mediaHtml, $type, $id);
+                    echo apply_filters('tsjippy_media_gallery_item_html', $mediaHtml, $type, $id);
                     ?>
                 </div>
 
@@ -451,7 +451,7 @@ class MediaGallery{
                 <div class="button-wrapper">
                     <?php
                     if($canEdit){
-                        echo apply_filters('sim-media-edit-link', "<a href='".SITEURL."/wp-admin/upload.php?item=$id' class='button editmedia'>Edit</a>", $id);
+                        echo apply_filters('tsjippy-media-edit-link', "<a href='".SITEURL."/wp-admin/upload.php?item=$id' class='button editmedia'>Edit</a>", $id);
                     }
 
                     if(!empty($description)){
@@ -464,10 +464,10 @@ class MediaGallery{
                         <a class='button small' href="<?php echo $attachmentUrl;?>">Link</a>
                     <?php
 
-                    $url            = apply_filters('sim_media_gallery_download_url', $url, $id);
+                    $url            = apply_filters('tsjippy_media_gallery_download_url', $url, $id);
 
-                    if(file_exists(SIM\urlToPath($url))){
-                        $fileName   = apply_filters('sim_media_gallery_download_filename', '', $type, $id);
+                    if(file_exists(TSJIPPY\urlToPath($url))){
+                        $fileName   = apply_filters('tsjippy_media_gallery_download_filename', '', $type, $id);
                         ?>
                         <button type="button" class="button small download">
                             Download

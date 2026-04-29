@@ -1,6 +1,6 @@
 <?php
-namespace SIM\MEDIAGALLERY;
-use SIM;
+namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 
 add_action('init', __NAMESPACE__.'\initBlocks');
 function initBlocks() {
@@ -29,14 +29,14 @@ function initBlocks() {
 add_action( 'enqueue_block_assets', __NAMESPACE__.'\loadBlockAssets' );
 function loadBlockAssets(){
 	if(is_admin()){
-		SIM\enqueueScripts();
+		TSJIPPY\enqueueScripts();
 
 		enqueueMediaGalleryScripts();
 		
-		if(function_exists('SIM\VIMEO\enqueueVimeoScripts')){
-			SIM\VIMEO\enqueueVimeoScripts();
+		if(function_exists('TSJIPPY\VIMEO\enqueueVimeoScripts')){
+			TSJIPPY\VIMEO\enqueueVimeoScripts();
 		}
 
-		wp_enqueue_script('sim_vimeo_shortcode_script');
+		wp_enqueue_script('tsjippy_vimeo_shortcode_script');
 	}
 }

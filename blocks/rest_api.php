@@ -1,6 +1,6 @@
 <?php
-namespace SIM\MEDIAGALLERY;
-use SIM;
+namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 
 add_action( 'rest_api_init', __NAMESPACE__.'\blockRestApiInit' );
 function blockRestApiInit() {
