@@ -4,7 +4,7 @@ namespace TSJIPPY\MEDIAGALLERY;
 /**
  * Plugin Name:  		Tsjippy Media Gallery
  * Description:  		This plugin adds a media gallery of downloadable pictures, video's and audio files.
- * Version:      		1.0.0
+ * Version:      		10.0.0
  * Author:       		Ewald Harmsen
  * AuthorURI:			harmseninnigeria.nl
  * Requires at least:	6.3
@@ -34,7 +34,7 @@ define(__NAMESPACE__ .'\SETTINGS', get_option('tsjippy_'.PLUGINSLUG.'_settings',
 
 // run on activation
 register_activation_hook( __FILE__, function(){
-	$postId	= TSJIPPY\ADMIN\createDefaultPage('Media Gallery', '[mediagallery]');
+	$postId	= \TSJIPPY\ADMIN\createDefaultPage('Media Gallery', '[mediagallery]');
 
 	$pages  = SETTINGS['mediagallery-pages'] ?? false;
 

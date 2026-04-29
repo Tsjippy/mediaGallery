@@ -1,5 +1,6 @@
 <?php
 namespace TSJIPPY\MEDIAGALLERY;
+use TSJIPPY;
 
 use function TSJIPPY\addElement;
 use function TSJIPPY\addRawHtml;
@@ -185,7 +186,7 @@ class AdminMenu extends \TSJIPPY\ADMIN\SubAdminMenu{
             }
 
             // check if attachment id shows up anywhere in the db
-            $postId			= attachment_url_to_postid(TSJIPPY\pathToUrl($path));
+            $postId			= attachment_url_to_postid(\TSJIPPY\pathToUrl($path));
             $featuredImage	= !empty($wpdb->get_results("SELECT post_id from $wpdb->postmeta WHERE meta_key='_thumbnail_id' AND meta_value=$postId"));
             $profileImage	= !empty($wpdb->get_results("SELECT user_id from $wpdb->usermeta WHERE meta_key='profile_picture' AND meta_value=$postId"));
 
