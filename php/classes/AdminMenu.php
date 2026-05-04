@@ -18,6 +18,8 @@ class AdminMenu extends \TSJIPPY\ADMIN\SubAdminMenu{
     public function settings($parent){
         addElement('label', $parent, [], 'Select the categories you do not want to be selectable');
 
+        addElement('br', $parent);
+
         $categories	= get_categories( array(
             'orderby' 		=> 'name',
             'order'   		=> 'ASC',
@@ -27,7 +29,20 @@ class AdminMenu extends \TSJIPPY\ADMIN\SubAdminMenu{
 
         foreach($categories as $category){
             $label  = addElement('label', $parent, [], $category->name);
-            addElement('input', $label, ['type' => 'checkbox', 'name' => 'categories[]', 'value' => $category->slug, in_array($category->slug, $this->settings['categories'] ?? []) ? 'checked' : '']);
+            addElement(
+                'input', 
+                $label, 
+                [
+                    'type' => 'checkbox', 
+                    'name' => 'categories[]', 
+                    'value' => $category->slug, 
+                    in_array($category->slug, $this->settings['categories'] ?? []) ? 'checked' : ''
+                ], 
+                '',
+                'afterBegin'
+            );
+
+            addElement('br', $parent);
         }
 
         return true;
