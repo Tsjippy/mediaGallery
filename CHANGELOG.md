@@ -7,7 +7,6 @@
 
 ### Fixed
 - bug
-- page description filter
 
 ### Updated
 
