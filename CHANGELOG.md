@@ -7,6 +7,7 @@
 
 ### Fixed
 - admin menu
+- admin menu
 
 ### Updated
 
