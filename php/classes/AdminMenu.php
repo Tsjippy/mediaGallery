@@ -29,15 +29,22 @@ class AdminMenu extends \TSJIPPY\ADMIN\SubAdminMenu{
 
         foreach($categories as $category){
             $label  = addElement('label', $parent, [], $category->name);
+
+            $attributes = [
+                'type' => 'checkbox', 
+                'name' => 'categories[]', 
+                'value' => $category->slug,
+            ];
+
+            
+            if(in_array($category->slug, $this->settings['categories'] ?? [])){
+                $attributes['checked'] = 'checked';
+            }
+
             addElement(
                 'input', 
                 $label, 
-                [
-                    'type' => 'checkbox', 
-                    'name' => 'categories[]', 
-                    'value' => $category->slug, 
-                    in_array($category->slug, $this->settings['categories'] ?? []) ? 'checked' : ''
-                ], 
+                $attributes, 
                 '',
                 'afterBegin'
             );
