@@ -38,7 +38,7 @@ function enqueueMediaGalleryScripts(){
     wp_register_script('tsjippy_gallery_script', TSJIPPY\pathToUrl(PLUGINPATH.'js/media_gallery.min.js'), array('tsjippy_formsubmit_script'), PLUGINVERSION, true);
     wp_register_script('tsjippy_refresh_gallery_script', TSJIPPY\pathToUrl(PLUGINPATH.'js/auto_refresh.min.js'), array('tsjippy_formsubmit_script'), PLUGINVERSION, true);
 
-    $pages   = SETTINGS['mediagallery-pages'] ?? false;
+    $pages   = SETTINGS['mediagallery-pages'] ?? [];
     if(is_numeric(get_the_ID()) && in_array(get_the_ID(), $pages)){
         wp_enqueue_style('tsjippy_gallery_style');
 		wp_enqueue_script('tsjippy_gallery_script');
