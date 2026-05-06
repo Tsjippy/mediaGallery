@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "tsjippy/media-gallery",
   "version": "0.1.0",
   "title": "Media gallery",
   "category": "widgets",
   "description": "Include a media gallery to showcast your media files",
-  "textdomain": "sim",
+  "textdomain": "tsjippy",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

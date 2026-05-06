@@ -62,7 +62,7 @@ const Edit = ({attributes, setAttributes}) => {
 				)));
 
 				const response = await apiFetch({
-					path: restApiPrefix+'/mediagallery/show',
+					path: tsjippy.restApiPrefix+'/mediagallery/show',
 					method: 'POST',
 					data: { categories: categories, color: color  },
 				});
