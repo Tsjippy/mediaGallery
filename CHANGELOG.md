@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- rest api prefix
 
 ### Updated
+
+## [10.0.6] - 2026-05-06
+
+
+### Fixed
+- rest api prefix
 
 ## [10.0.5] - 2026-05-05
 
