@@ -22,7 +22,7 @@ async function downloadVimeoVideo(ev){
     let response    = await FormSubmit.fetchRestApi('vimeo/download_to_server', formData);
 
     if(response){
-        Main.displayMessage(response, 'success');
+        Main.displayMessage(response);
         ev.target.closest('form').remove();
     }else{
         ev.target.closest('form').querySelector('[name="download-url"]').value = '';
