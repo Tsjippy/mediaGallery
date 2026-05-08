@@ -34,11 +34,11 @@ define(__NAMESPACE__ .'\SETTINGS', get_option('tsjippy_'.PLUGINSLUG.'_settings',
 
 // run right before activation
 register_activation_hook( __FILE__, function(){
-	$postId	= \TSJIPPY\ADMIN\createDefaultPage('Media Gallery', '[mediagallery]');
+	$postId		= \TSJIPPY\ADMIN\createDefaultPage('Media Gallery', '[mediagallery]');
 
-	$pages  = SETTINGS['mediagallery-pages'] ?? false;
+	$pages  	= SETTINGS['mediagallery-pages'] ?? [];
 
-	$pages[]  = $postId;
+	$pages[]	= $postId;
 
 	$settings   = SETTINGS;
 	$settings['mediagallery-pages'] = $pages;

@@ -191,7 +191,15 @@ class MediaGallery{
     public function filterableMediaGallery(){
         ob_start();
 
-        $url			= TSJIPPY\ADMIN\getDefaultPageLink(PLUGINSLUG, 'front-end-post-pages');
+        
+        $url			= '';
+        if(defined('TSJIPPY\FRONTENDPOSTING\SETTINGS')){
+            $url   = get_permalink(TSJIPPY\FRONTENDPOSTING\SETTINGS['front-end-post-page'] ?? '');
+
+            if(!$url){
+				$url	= '';
+			}
+        }
 
         $categories	= get_categories( array(
             'orderby' 		=> 'name',
