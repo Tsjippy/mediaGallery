@@ -7,6 +7,7 @@
 - css update
 
 ### Fixed
+- account page retrieval
 
 ### Updated
 
