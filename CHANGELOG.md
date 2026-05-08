@@ -4,12 +4,19 @@
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Updated
+
+## [10.0.8] - 2026-05-08
+
+
+### Changed
 - css update
 
 ### Fixed
 - account page retrieval
-
-### Updated
 
 ## [10.0.7] - 2026-05-07
 
