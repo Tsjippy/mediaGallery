@@ -11,11 +11,17 @@ function blockRestApiInit() {
 		array(
 			'methods' 				=> 'POST',
 			'callback' 				=> __NAMESPACE__.'\displayMediaGallery',
-			'permission_callback' 	=> '__return_true',
+			'permission_callback' 	=> '__return_true',	// Allow non-logged in users to access this endpoint
 		)
 	);
 }
 
+/**
+ * Displays the media gallery based on the provided request parameters.
+ *
+ * @param \WP_REST_Request $wpRestRequest The REST request object.
+ * @return array The media gallery data.
+ */
 function displayMediaGallery($wpRestRequest) {
 
 	$args = wp_parse_args($wpRestRequest->get_params(), array(

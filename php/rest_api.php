@@ -19,6 +19,7 @@ function restApiInit() {
 					$types	= explode(',', $param['types']);
 				}
 
+				$categories	= $param['categories'];
 				if(empty($param['categories'])){
 					$categories	= [];
 				}elseif(!is_array($param['categories'])){
@@ -28,7 +29,7 @@ function restApiInit() {
 				$mediaGallery	= new MediaGallery($types, $param['amount'], $categories, false, $param['page']);
 				return $mediaGallery->loadMediaHTML($param['skipAmount'], $param['startIndex']);
 			},
-			'permission_callback' 	=> '__return_true',
+			'permission_callback' 	=> '__return_true',		// Allow non-logged in users to access this endpoint
 			'args'					=> array(
 				'amount'		=> array('required'	=> true),
 				'page'			=> array('required'	=> true),
@@ -55,7 +56,7 @@ function restApiInit() {
 				$mediaGallery	= new MediaGallery(explode(',', $param['types']), $param['amount'], $categories, false, 1, $param['search'], $param['color']);
 				return $mediaGallery->loadMediaHTML();
 			},
-			'permission_callback' 	=> '__return_true',
+			'permission_callback' 	=> '__return_true',		// Allow non-logged in users to access this endpoint
 			'args'					=> array(
 				'amount'		=> array('required'	=> true),
 				'search'		=> array('required'	=> true),
@@ -71,6 +72,7 @@ function restApiInit() {
 			'callback'				=> function(\WP_REST_Request $request){
 				$param	= $request->get_params();
 
+				$categories	= $param['categories'];
 				if(empty($param['categories'])){
 					$categories	= [];
 				}elseif(!is_array($param['categories'])){
@@ -84,7 +86,7 @@ function restApiInit() {
 				}
 				return $html;
 			},
-			'permission_callback' 	=> '__return_true',
+			'permission_callback' 	=> '__return_true',		// Allow non-logged in users to access this endpoint
 			'args'					=> array(
 				'amount'		=> array('required'	=> true)
 			)
@@ -114,7 +116,7 @@ function restApiInit() {
 				$mediaGallery	= new MediaGallery($types, $param['amount'], $categories, true, 1, '', $param['color']);
 				return $mediaGallery->mediaGallery(trim($param['title']), $param['speed'], $param['desc']);
 			},
-			'permission_callback' 	=> '__return_true',
+			'permission_callback' 	=> '__return_true',		// Allow non-logged in users to access this endpoint
 			'args'					=> array(
 				'amount'		=> array('required'	=> true)
 			)
